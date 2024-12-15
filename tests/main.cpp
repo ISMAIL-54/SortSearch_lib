@@ -2,20 +2,26 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <forward_list>
 #include <list>
 #include "sort.hpp"
 
-bool comp(std::string a, std::string b) {
-    if (a < b)
-        return true;
-    return false;
+bool comp(char a, char b) {
+    bool result = (a > b) ? false : true;
+    return result;
 }
 
 int main() {
-    std::vector<std::string> numbers {"ab", "cc", "4b", "de", "ba"};
-    sl::bubble_sort(numbers.begin(), numbers.end(), comp);
-    for (int i=0; i < numbers.size(); i++) {
-        std::cout << numbers[i] << " ";
+    std::forward_list<char> str = {'a', 's', 'd', 'f', 'j', 'd', 'f', 'l', 's'};
+    std::forward_list<char>::iterator iter;
+    for (iter = str.begin(); iter != str.end(); iter++) {
+        std::cout << *iter;
     }
     std::cout << std::endl;
+    sl::quick_sort(str.begin(), str.end());
+    for (iter = str.begin(); iter != str.end(); iter++) {
+        std::cout << *iter;
+    }
+    std::cout << std::endl;
+    return 0;
 }

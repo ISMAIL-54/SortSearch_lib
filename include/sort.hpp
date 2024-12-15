@@ -1,41 +1,212 @@
-#ifndef ALGORITHMS
-#define ALGORITHMS 
+#ifndef ALGORIHMS
+#define ALGORIHMS 
+#include <algorithm>
 #include <cstddef>
 #include <iterator>
 #include <iostream>
+#include <vector>
 
 namespace sl {
 
-    template<typename T>
-    inline void swap(T firstValue, T secondValue) {
-        typename std::iterator_traits<T>::value_type temp = *firstValue;
-        *firstValue = *secondValue;
-        *secondValue = temp;
+    template<typename iterator>
+    void bubble_sort(iterator _first, iterator _last) {
+        for (iterator itr1 = _first; itr1 != _last; itr1++)
+            for (iterator itr2 = _first; itr2 != (_last-1); itr2++)
+                if (*itr2 > *(itr2 + 1))
+                    std::iter_swap(itr2, itr2 + 1);
     }
 
-    template<typename T>
-    void bubble_sort(T _first, T _last) {
-        size_t _size = std::distance(_first, _last);
-        for (T itr1 = _first; itr1 != _last; itr1++) {
-            for (T itr2 = _first; itr2 != (_last-1); itr2++) {
-                if (*itr2 > *(itr2 + 1)) {
-                    swap(itr2, itr2 + 1);
-                }   
+    template<typename iterator, typename Comp>
+    void bubble_sort(iterator _first, iterator _last, Comp _comp) {
+        for (iterator itr1 = _first; itr1 != _last; itr1++)
+            for (iterator itr2 = _first; itr2 != (_last-1); itr2++)
+                if (_comp(*itr2, *(itr2 + 1)))
+                    std::iter_swap(itr2, itr2 +1);
+    }
+    
+    template<class iterator>
+    void insertion_sort(iterator _first, iterator _last) {
+        iterator i = _first;
+        for (i = ++i; i != _last; i++) {
+            typename std::iterator_traits<iterator>::value_type key = *i;
+            iterator j = i;
+            while (j != _first && *(std::prev(j)) > key) {
+                *j = *(std::prev(j));
+                --j;
             }
+            *j = key;
         }
     }
 
-    template<typename T, typename Comp>
-    void bubble_sort(T _first, T _last, Comp _comp) {
-        size_t _size = std::distance(_first, _last);
-        for (T iter1 = _first + 1; iter1 != _last; iter1++) {
-            for (T iter2 = _first; iter2 != (_last-1); iter2++) {
-                if (_comp(*iter2, *(iter2 + 1))) {
-                    swap(iter2, iter2 + 1);
-                }   
+    template<typename iterator, typename Comp>
+    void insertion_sort(iterator _first, iterator _last, Comp _comp) {
+        iterator i = _first;
+        for (i = ++i; i != _last; i++) {
+            typename std::iterator_traits<iterator>::value_type key = *i;
+            iterator j = i;
+            while (j != _first && _comp(*(std::prev(j)), key)) {
+                *j = *(std::prev(j));
+                --j;
+            }
+            *j = key;
+        }
+    }
+
+    template<typename iterator>
+    void selection_sort(iterator _first, iterator _last) {
+        for (iterator i = _first; i != _last; i++) {
+            iterator min_itr = i, j = i;
+            typename std::iterator_traits<iterator>::value_type temp = *i;
+            for (j = ++j; j != _last; j++)
+                if (*j < *min_itr)
+                    min_itr = j;
+            *i = *min_itr;
+            *min_itr = temp;
+        }
+    }
+
+    template<typename iterator, typename Comp>
+    void selection_sort(iterator _first, iterator _last, Comp _comp) {
+        for (iterator i = _first; i != _last; i++) {
+            iterator key = i, j = i;
+            typename std::iterator_traits<iterator>::value_type temp = *i;
+            for (j = ++j; j != _last; j++)
+                if (_comp(*key, *j))
+                    key = j;
+            *i = *key;
+            *key = temp;
+        }
+    }
+
+    template<typename iterator>
+    void merge_func(iterator _first, iterator _mid, iterator _last) {
+        std::vector<typename std::iterator_traits<iterator>::value_type> L;
+        std::vector<typename std::iterator_traits<iterator>::value_type> R;
+
+        iterator it1;
+        iterator it2;
+        for (it1 = _first; it1 != _mid; it1++)
+            L.push_back(*it1);
+        for (it2 = _mid; it2 != _last; it2++)
+            R.push_back(*it2);
+
+        int i=0, j=0;
+        iterator beg = _first;
+        while (i < L.size() && j < R.size()) {
+            if (L[i] < R[j]) {
+                *beg = L[i];
+                i++;
+            } else {
+                *beg = R[j];
+                j++;
+            }
+            beg++;
+        }
+
+        while (i < L.size()) {
+            *beg = L[i];
+            beg++, i++;
+        }
+        
+        while (j < R.size()) {
+            *beg = R[j];
+            beg++, j++;
+        }
+    }
+
+    template<typename iterator>
+    void merge_sort(iterator _first, iterator _last) {
+        int diff = std::distance(_first, _last);
+        if (diff <= 1)
+            return;
+        iterator _mid = _first;
+        std::advance(_mid, diff/2);
+        merge_sort(_first, _mid);
+        merge_sort(_mid, _last);
+        merge_func(_first, _mid, _last);
+    }
+
+    template<typename iterator, typename Comp>
+    void merge_func(iterator _first, iterator _mid, iterator _last, Comp _comp) {
+        std::vector<typename std::iterator_traits<iterator>::value_type> L;
+        std::vector<typename std::iterator_traits<iterator>::value_type> R;
+
+        iterator it1;
+        iterator it2;
+        for (it1 = _first; it1 != _mid; it1++)
+            L.push_back(*it1);
+        for (it2 = _mid; it2 != _last; it2++)
+            R.push_back(*it2);
+
+        int i=0, j=0;
+        iterator beg = _first;
+        while (i < L.size() && j < R.size()) {
+            if (!_comp(L[i], R[j])) {
+                *beg = L[i];
+                i++;
+            } else {
+                *beg = R[j];
+                j++;
+            }
+            beg++;
+        }
+
+        while (i < L.size()) {
+            *beg = L[i];
+            beg++, i++;
+        }
+        
+        while (j < R.size()) {
+            *beg = R[j];
+            beg++, j++;
+        }
+    }
+
+    template<typename iterator, typename Comp>
+    void merge_sort(iterator _first, iterator _last, Comp _comp) {
+        int diff = std::distance(_first, _last);
+        if (diff <= 1)
+            return;
+        iterator _mid = _first;
+        std::advance(_mid, diff/2);
+        merge_sort(_first, _mid, _comp);
+        merge_sort(_mid, _last, _comp);
+        merge_func(_first, _mid, _last, _comp);
+    }
+
+
+    template<typename iterator>
+    iterator get_pivot(iterator _first, iterator _last) {
+        iterator pivot = _last;
+        iterator i = _first;
+        for (iterator j = _first; j != _last; j++) {
+            std::cout << *j << std::endl;
+            if (*j < *pivot) {
+                if (j == _first)
+                    i = _first;
+                else 
+                    i++;
+                std::iter_swap(i, j);
             }
         }
+        std::iter_swap(++i, pivot);
+        return i;
+    }
+
+    template<typename iterator>
+    void quick_sort(iterator _first, iterator _last) {
+        int diff = std::distance(_first, _last);
+        if (diff <= 1)
+            return;
+
+        iterator pivot = get_pivot(_first, _last); 
+
+        quick_sort(_first, std::prev(pivot));
+        quick_sort(std::next(pivot), _last);
     }
 };
+
+/*    4 3 2 1 -1 0   4
+ * */
 
 #endif
