@@ -2,8 +2,10 @@
 #define ALGORIHMS 
 #include <algorithm>
 #include <cstddef>
+#include <exception>
 #include <iterator>
 #include <iostream>
+#include <optional>
 #include <vector>
 
 namespace sl {
@@ -174,19 +176,16 @@ namespace sl {
         merge_func(_first, _mid, _last, _comp);
     }
 
-
     template<typename iterator>
     iterator get_pivot(iterator _first, iterator _last) {
-        iterator pivot = _last;
+        int diff = std::distance(_first, _last);
+        iterator pivot = _first;
+        std::advance(pivot, diff-1);
         iterator i = _first;
         for (iterator j = _first; j != _last; j++) {
-            std::cout << *j << std::endl;
             if (*j < *pivot) {
-                if (j == _first)
-                    i = _first;
-                else 
-                    i++;
                 std::iter_swap(i, j);
+                i++;
             }
         }
         std::iter_swap(++i, pivot);
@@ -195,18 +194,53 @@ namespace sl {
 
     template<typename iterator>
     void quick_sort(iterator _first, iterator _last) {
-        int diff = std::distance(_first, _last);
+        int diff = std::distance(_first, std::prev(_last));
         if (diff <= 1)
             return;
 
-        iterator pivot = get_pivot(_first, _last); 
+        iterator pivot = _last;
+        iterator i = _first;
+        for (iterator j = _first; j != _last; j++) {
+            if (*j < *pivot) {
+                std::iter_swap(i, j);
+                i++;
+            }
+        }
+        std::iter_swap(++i, pivot);
+        pivot = i;
 
         quick_sort(_first, std::prev(pivot));
         quick_sort(std::next(pivot), _last);
     }
+
+    template<typename iterator, typename dataType>
+    int linear_search(iterator _first, iterator _last, dataType value) {
+       for (iterator i = _first; i != _last; i++) {
+            if (*i == value)
+                return std::distance(_first, i);
+        }
+        return -1;
+    }
+
+    template<typename iterator, typename dataType>
+    int binary_search(iterator _first, iterator _last, dataType value) {
+        merge_sort(_first, _last);
+        iterator low = _first;
+        iterator high = _last;
+        while (std::distance(low, high) >= 0) {
+            iterator mid = low;
+            std::advance(mid, std::distance(low, high) / 2);
+            if (*mid == value)
+                return std::distance(_first, mid);
+
+            if (*mid < value)
+                low = std::next(mid);
+            else
+                high = std::prev(mid);
+        }
+        return -1;
+    }
 };
 
-/*    4 3 2 1 -1 0   4
- * */
 
 #endif

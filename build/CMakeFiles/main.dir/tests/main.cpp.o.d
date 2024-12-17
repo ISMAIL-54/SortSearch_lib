@@ -139,7 +139,7 @@ CMakeFiles/main.dir/tests/main.cpp.o: \
  /usr/include/c++/13/bits/stl_list.h \
  /usr/include/c++/13/bits/allocated_ptr.h \
  /usr/include/c++/13/bits/list.tcc \
- /home/i5m4il/Projects/SortSearch_lib/include/sort.hpp \
+ /home/i5m4il/Projects/SortSearch_lib/include/algorithms.hpp \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \
@@ -147,4 +147,5 @@ CMakeFiles/main.dir/tests/main.cpp.o: \
  /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/iterator \
- /usr/include/c++/13/bits/stream_iterator.h
+ /usr/include/c++/13/bits/stream_iterator.h /usr/include/c++/13/optional \
+ /usr/include/c++/13/bits/enable_special_members.h

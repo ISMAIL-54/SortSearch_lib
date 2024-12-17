@@ -4,7 +4,7 @@
 #include <array>
 #include <forward_list>
 #include <list>
-#include "sort.hpp"
+#include "algorithms.hpp"
 
 bool comp(char a, char b) {
     bool result = (a > b) ? false : true;
@@ -12,8 +12,8 @@ bool comp(char a, char b) {
 }
 
 int main() {
-    std::forward_list<char> str = {'a', 's', 'd', 'f', 'j', 'd', 'f', 'l', 's'};
-    std::forward_list<char>::iterator iter;
+/*    std::vector<char> str = {'a', 's', 'd', 'f', 'j', 'd', 'f', 'l', 's'};
+    std::vector<char>::iterator iter;
     for (iter = str.begin(); iter != str.end(); iter++) {
         std::cout << *iter;
     }
@@ -22,6 +22,17 @@ int main() {
     for (iter = str.begin(); iter != str.end(); iter++) {
         std::cout << *iter;
     }
-    std::cout << std::endl;
+    std::cout << std::endl; */
+    std::vector<int> numbers = {14, 43, 421, 1, 432};
+    std::vector<int>::iterator iter;
+    for (iter = numbers.begin(); iter != numbers.end(); iter++) {
+        std::cout << *iter << " ";
+    }
+    std::cout << std::endl; 
+    sl::quick_sort(numbers.begin(), numbers.end());
+    for (iter = numbers.begin(); iter != numbers.end(); iter++) {
+        std::cout << *iter << " ";
+    }
+    std::cout << std::endl; 
     return 0;
 }
