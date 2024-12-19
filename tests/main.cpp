@@ -6,33 +6,26 @@
 #include <list>
 #include "algorithms.hpp"
 
-bool comp(char a, char b) {
-    bool result = (a > b) ? false : true;
-    return result;
+bool comp(int a, int b) {
+    return a > b;
 }
 
 int main() {
-/*    std::vector<char> str = {'a', 's', 'd', 'f', 'j', 'd', 'f', 'l', 's'};
-    std::vector<char>::iterator iter;
-    for (iter = str.begin(); iter != str.end(); iter++) {
-        std::cout << *iter;
-    }
-    std::cout << std::endl;
-    sl::quick_sort(str.begin(), str.end());
-    for (iter = str.begin(); iter != str.end(); iter++) {
-        std::cout << *iter;
-    }
-    std::cout << std::endl; */
-    std::vector<int> numbers = {14, 43, 421, 1, 432};
+    std::vector<int> numbers = {1, 234, 10, -10, 300};
     std::vector<int>::iterator iter;
     for (iter = numbers.begin(); iter != numbers.end(); iter++) {
         std::cout << *iter << " ";
     }
     std::cout << std::endl; 
-    sl::quick_sort(numbers.begin(), numbers.end());
+    sl::merge_sort(numbers.begin(), numbers.end());
     for (iter = numbers.begin(); iter != numbers.end(); iter++) {
         std::cout << *iter << " ";
     }
     std::cout << std::endl; 
+    int result = sl::binary_search(numbers.begin(), numbers.end(), 1);
+    if (result != -1)
+        std::cout << "Index of 1 is " << result << std::endl;
+    else
+        std::cout << "Not found" << std::endl;
     return 0;
 }

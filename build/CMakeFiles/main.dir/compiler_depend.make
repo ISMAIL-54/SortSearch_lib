@@ -84,7 +84,6 @@ CMakeFiles/main.dir/tests/main.cpp.o: /home/i5m4il/Projects/SortSearch_lib/tests
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
-  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/exception_ptr.h \
@@ -167,7 +166,6 @@ CMakeFiles/main.dir/tests/main.cpp.o: /home/i5m4il/Projects/SortSearch_lib/tests
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/list \
   /usr/include/c++/13/new \
-  /usr/include/c++/13/optional \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/execution_defs.h \
   /usr/include/c++/13/pstl/glue_algorithm_defs.h \
@@ -313,7 +311,7 @@ CMakeFiles/main.dir/tests/main.cpp.o: /home/i5m4il/Projects/SortSearch_lib/tests
 
 /usr/include/c++/13/bits/streambuf.tcc:
 
-/usr/include/c++/13/bits/stl_uninitialized.h:
+/usr/include/c++/13/bits/stream_iterator.h:
 
 /usr/include/bits/types/timer_t.h:
 
@@ -342,6 +340,8 @@ CMakeFiles/main.dir/tests/main.cpp.o: /home/i5m4il/Projects/SortSearch_lib/tests
 /usr/include/ctype.h:
 
 /usr/include/bits/waitflags.h:
+
+/usr/include/c++/13/bits/stl_uninitialized.h:
 
 /usr/include/bits/types/struct_FILE.h:
 
@@ -467,8 +467,6 @@ CMakeFiles/main.dir/tests/main.cpp.o: /home/i5m4il/Projects/SortSearch_lib/tests
 
 /home/i5m4il/Projects/SortSearch_lib/include/algorithms.hpp:
 
-/usr/include/c++/13/optional:
-
 /usr/include/c++/13/bits/istream.tcc:
 
 /usr/include/c++/13/bits/exception_ptr.h:
@@ -570,10 +568,6 @@ CMakeFiles/main.dir/tests/main.cpp.o: /home/i5m4il/Projects/SortSearch_lib/tests
 /usr/include/c++/13/bits/charconv.h:
 
 /usr/include/c++/13/bits/stl_pair.h:
-
-/usr/include/c++/13/bits/stream_iterator.h:
-
-/usr/include/c++/13/bits/enable_special_members.h:
 
 /usr/include/c++/13/bits/exception_defines.h:
 

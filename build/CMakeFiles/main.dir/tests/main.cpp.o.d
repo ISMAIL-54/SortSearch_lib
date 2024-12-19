@@ -147,5 +147,4 @@ CMakeFiles/main.dir/tests/main.cpp.o: \
  /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/iterator \
- /usr/include/c++/13/bits/stream_iterator.h /usr/include/c++/13/optional \
- /usr/include/c++/13/bits/enable_special_members.h
+ /usr/include/c++/13/bits/stream_iterator.h
