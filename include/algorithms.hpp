@@ -140,5 +140,4 @@ namespace sl {
     }
 };
 
-
 #endif

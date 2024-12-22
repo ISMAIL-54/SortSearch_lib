@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/i5m4il/Projects/SortSearch_lib/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -130,41 +140,43 @@ SL/fast:
 .PHONY : SL/fast
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named Catch2
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+Catch2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Catch2
+.PHONY : Catch2
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+Catch2/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/catch2-build/src/CMakeFiles/Catch2.dir/build.make _deps/catch2-build/src/CMakeFiles/Catch2.dir/build
+.PHONY : Catch2/fast
 
-tests/main.o: tests/main.cpp.o
-.PHONY : tests/main.o
+#=============================================================================
+# Target rules for targets named Catch2WithMain
 
-# target to build an object file
-tests/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/tests/main.cpp.o
-.PHONY : tests/main.cpp.o
+# Build rule for target.
+Catch2WithMain: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Catch2WithMain
+.PHONY : Catch2WithMain
 
-tests/main.i: tests/main.cpp.i
-.PHONY : tests/main.i
+# fast build rule for target.
+Catch2WithMain/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build.make _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/build
+.PHONY : Catch2WithMain/fast
 
-# target to preprocess a source file
-tests/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/tests/main.cpp.i
-.PHONY : tests/main.cpp.i
+#=============================================================================
+# Target rules for targets named tests
 
-tests/main.s: tests/main.cpp.s
-.PHONY : tests/main.s
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
 
-# target to generate assembly for a file
-tests/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/tests/main.cpp.s
-.PHONY : tests/main.cpp.s
+# fast build rule for target.
+tests/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/tests.dir/build.make tests/CMakeFiles/tests.dir/build
+.PHONY : tests/fast
 
 # Help Target
 help:
@@ -174,11 +186,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
+	@echo "... Catch2"
+	@echo "... Catch2WithMain"
 	@echo "... SL"
-	@echo "... main"
-	@echo "... tests/main.o"
-	@echo "... tests/main.i"
-	@echo "... tests/main.s"
+	@echo "... tests"
 .PHONY : help
 
 
