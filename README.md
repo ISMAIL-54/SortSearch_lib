@@ -1,25 +1,30 @@
 # SortSearch library
+----------------------------------------------------------------
 An efficient implementation of sorting and searching algorithms.
 
 # Features
+----------------------------------------------------------------
 ## Sorting algorithms
-    - [x] Bubble sort
-    - [x] Insertion sort
-    - [x] Selection sort
-    - [x] Merge sort
-    - [x] Quick sort
+- [x] Bubble sort
+- [x] Insertion sort
+- [x] Selection sort
+- [x] Merge sort
+- [x] Quick sort
 
 ## Searching algorithms
-    - [x] Linear search
-    - [x] Binary search
+- [x] Linear search
+- [x] Binary search
 
 
 # Usage
+----------------------------------------------------------------
 ## Installation
 
 1. Clone the repository:
 
-    git clone https://github.com/ISMAIL-54/SortSearch_lib.git
+```shell
+git clone https://github.com/ISMAIL-54/SortSearch_lib.git
+```
 
 2. Include the library in your project by adding the header and source files to your build system.
 
@@ -27,17 +32,22 @@ An efficient implementation of sorting and searching algorithms.
 
 - Navigate to the project directory:
 
+```shell
     cd SortSearch_lib
+```
 
 - Create a build directory and run CMake:
     
+```shell
     mkdir build && cd build
     cmake ..
     cmake --build .
+```
 
 ## Example Usage
 ### Sorting example
 
+```shell
     #include "algorithms.hpp"
     #include <vector>
     #include <iostream>
@@ -52,9 +62,11 @@ An efficient implementation of sorting and searching algorithms.
         }
         return 0;
     }
+```
 
 ### Searching example
 
+```shell
     #include <iostream>
     #include "algorithms.hpp"
     #include <vector>
@@ -69,10 +81,12 @@ An efficient implementation of sorting and searching algorithms.
         }
         return 0;
     }
+```
 
 # Tests
 The library includes units tests with Catch2. To run tests:
     
+```shell
     cd build
     ctest
-
+```
