@@ -19,7 +19,7 @@ An efficient implementation of sorting and searching algorithms.
 
 1. Clone the repository:
 
-```
+```shell
 git clone https://github.com/ISMAIL-54/SortSearch_lib.git
 ```
 
@@ -29,13 +29,13 @@ git clone https://github.com/ISMAIL-54/SortSearch_lib.git
 
 - Navigate to the project directory:
 
-```
+```shell
     cd <project-directory>
 ```
 
 - Create a build directory and run CMake:
     
-```
+```shell
     mkdir build && cd build
     cmake ..
     cmake --build .
@@ -44,7 +44,7 @@ git clone https://github.com/ISMAIL-54/SortSearch_lib.git
 ## Example Usage
 ### Sorting example
 
-```
+```cpp
     #include "algorithms.hpp"
     #include <vector>
     #include <iostream>
@@ -63,7 +63,7 @@ git clone https://github.com/ISMAIL-54/SortSearch_lib.git
 
 ### Searching example
 
-```
+```cpp
     #include <iostream>
     #include "algorithms.hpp"
     #include <vector>
@@ -83,7 +83,7 @@ git clone https://github.com/ISMAIL-54/SortSearch_lib.git
 # Tests
 The library includes units tests with Catch2. To run tests:
     
-```
+```shell
     cd build
     ctest
 ```
